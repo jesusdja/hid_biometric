@@ -8,16 +8,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="asia.kanopi.fingerreader.ScanActivity.ScanActivity">
+    tools:context="com.example.hid_pro4.ScanActivity2">
+
 
     <TextView
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvStatus"
         android:textStyle="bold" />
     <TextView
+        android:id="@+id/tvError"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvError"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

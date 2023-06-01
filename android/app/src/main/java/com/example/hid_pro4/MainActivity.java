@@ -1,6 +1,7 @@
 package com.example.hid_pro4;
 
 import android.content.Intent;
+import android.view.View;
 
 import com.google.android.gms.common.api.Status;
 
@@ -48,6 +49,10 @@ public class MainActivity extends FlutterActivity {
         startActivityForResult(intent, SCAN_FINGER);
     }
 
+    public void startScan(View view) {
+        startScanActivity();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -72,4 +77,5 @@ public class MainActivity extends FlutterActivity {
         scanResult.put("errorMessage", errorMessage);
         return scanResult;
     }
+
 }

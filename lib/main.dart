@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:animated_button/animated_button.dart';
 import 'package:flutter/material.dart';
 
 import 'metholChannel.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'HID',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -47,19 +49,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => startScan(),
-              child: const Icon(Icons.fingerprint_outlined),
-            ),
-          ],
+      body: Center(
+        child: AnimatedButton(
+          onPressed: () => startScan(),
+          enabled: true,
+          child: Icon(
+            Icons.fingerprint_outlined,
+            color: Colors.white,
+            size: 45,
+          ),
         ),
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   mainAxisSize: MainAxisSize.max,
+        //   children: [
+        //     ElevatedButton(
+        //       style: ButtonStyle(
+        //         elevation: MaterialStatePropertyAll(10),
+        //         shadowColor: MaterialStatePropertyAll(Colors.black),
+        //         //fixedSize: MaterialStatePropertyAll(Size(35, 35)),
+        //
+        //       ),
+        //       onPressed: () => startScan(),
+        //       child: const Icon(Icons.fingerprint_outlined),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

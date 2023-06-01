@@ -1,6 +1,9 @@
 package com.example.hid_pro4;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.hid_pro4.areu4500library.Fingerprint;
 import com.example.hid_pro4.areu4500library.Status;
@@ -23,12 +28,15 @@ public class ScanActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scan);
+
         ActionBar actionBar = getSupportActionBar();
-        setContentView(R.layout.notification_action_tombstone);
-        tvStatus = (TextView) findViewById(R.id.text);
-        tvError = (TextView) findViewById(R.id.top);
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        tvStatus = findViewById(R.id.tvStatus);
+        tvError = findViewById(R.id.tvError);
+
         fingerprint = new Fingerprint();
     }
 
@@ -46,6 +54,12 @@ public class ScanActivity2 extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+                // Solicitar el permiso en tiempo de ejecución
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.USE_FINGERPRINT}, 1);
+            }
+        }
         fingerprint.scan(this, printHandler, updateHandler);
         super.onStart();
     }
@@ -94,7 +108,6 @@ public class ScanActivity2 extends AppCompatActivity {
                     tvStatus.setText(String.valueOf(status));
                     tvError.setText(msg.getData().getString("errorMessage"));
                     break;
-
             }
         }
     };
@@ -116,7 +129,6 @@ public class ScanActivity2 extends AppCompatActivity {
             }
             setResult(RESULT_OK, intent);
             finish();
-
         }
     };
 }

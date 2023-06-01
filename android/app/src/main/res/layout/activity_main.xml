@@ -7,26 +7,28 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="asia.kanopi.fingerreader.MainActivity">
+    tools:context="com.example.hid_pro4.MainActivity">
 
     <Button
         android:id="@+id/buttonScan"
-        android:layout_width="wrap_content"
+        android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:text="Scan finger"
-        android:layout_centerHorizontal="true"
-        android:onClick="startScan"/>
+        android:onClick="startScan" />
 
     <ImageView
         android:id="@+id/ivFingerDisplay"
-        android:layout_width="384dp"
-        android:layout_height="290dp"
-        android:scaleType="fitXY"
-        android:layout_gravity="center"
-        android:contentDescription="Scanned fingerprint"
+        android:layout_width="395dp"
+        android:layout_height="256dp"
         android:layout_below="@+id/buttonScan"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="Scanned fingerprint"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tvMessage"
@@ -34,9 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_below="@+id/ivFingerDisplay"
-        android:layout_centerHorizontal="true"
-        />
-
-
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
