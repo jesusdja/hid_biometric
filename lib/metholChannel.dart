@@ -8,8 +8,7 @@ class AndroidChannel {
   static const MethodChannel _channel = MethodChannel(channelName);
 
   static Future<Map<dynamic, dynamic>> startScan() async {
-    final Map<dynamic, dynamic> result =
-    await _channel.invokeMethod('startScan');
+    final Map<dynamic, dynamic> result = await _channel.invokeMethod('startScan');
     print(result);
     return result;
   }

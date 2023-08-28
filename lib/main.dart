@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:animated_button/animated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:hid_pro4/permission_handler.dart';
 
 import 'metholChannel.dart';
 
@@ -34,6 +35,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   //METODOS
   void startScan() async {
     Map<dynamic, dynamic> result = await AndroidChannel.startScan();
